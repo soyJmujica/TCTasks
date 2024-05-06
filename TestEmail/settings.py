@@ -79,6 +79,8 @@ WSGI_APPLICATION = "TestEmail.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+### AWS
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
@@ -86,6 +88,15 @@ DATABASES = {
         conn_max_age=600
     )
 }
+##########
+###SQLITE###
+DATABASES = {
+    'default':dj_database_url.config(
+        default='sqlite:///https://github.com/soyJmujica/TCTasks/blob/master/db.sqlite3'
+    )
+}
+#############
+###Default de Django###
 '''DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
