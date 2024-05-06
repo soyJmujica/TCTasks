@@ -92,7 +92,7 @@ DATABASES = {
 ###SQLITE###
 DATABASES = {
     'default':dj_database_url.config(
-        default='sqlite:///https://github.com/soyJmujica/TCTasks/blob/master/db.sqlite3'
+        default='sqlite:///TestEmail/db.sqlite3'
     )
 }
 #############
