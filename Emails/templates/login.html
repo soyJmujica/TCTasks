@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<form action="#" method="POST">
+	{% csrf_token %}
+  <div class="form-group">
+    {% for field in form %}
+      {{ field.label_tag }}<br>
+      {{ field }}<br>
+    {% endfor %}
+  </div>
+  <button class="btn btn-primary">
+    submit
+  </button>
+</form>
+<div id="error-popup" class="popup">
+	<div class="popup-content">
+		<p id="error-message">{{message}}</p>
+		<button id="close-button">Close</button>
+	</div>
+</div>
+
+<script>
+	// main.js
+document.addEventListener('DOMContentLoaded', function() {
+    const errorPopup = document.getElementById('error-popup');
+    const errorMessage = document.getElementById('error-message');
+    const closeButton = document.getElementById('close-button');
+
+    // Mostrar el popup con el mensaje de error
+    function showErrorPopup(message) {
+        errorMessage.textContent = message;
+        errorPopup.style.display = 'block';
+    }
+
+    // Ocultar el popup
+    function hideErrorPopup() {
+        errorPopup.style.display = 'none';
+    }
+
+    // Evento para cerrar el popup al hacer clic en el botón "Cerrar"
+    closeButton.addEventListener('click', hideErrorPopup);
+});
+
+</script>
+{% endblock %}

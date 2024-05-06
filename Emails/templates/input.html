@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Add New Property </h1>
+<form action="{% url 'under contract' %}" method="POST", enctype = 'multipar/form-data'>
+    {% csrf_token %}
+    <div class = "form-group">
+        {{form.as_table}}
+    </div>
+    <button class = "btn btn-primary">
+        save
+    </button> 
+</form>
+{% endblock %}

@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Monserrat', sans-serif;
+}
+
+*:hover{
+outline-color: blue;
+
+}
+
+body{
+ /*background-image: url("https://preview.redd.it/megara-pocahontas-merida-esmeralda-jasmine-kida-hercules-v0-0kd7ph6j16qc1.jpeg?width=640&crop=smart&auto=webp&s=81d76ab5b97ea3cbcbe4710578f15b986e6ea936");
+   */background-size: cover;
+  background-position: 20% 20%;
+  background-attachment: fixed;
+  background-image: url("../img/fondo31.png");
+  text-shadow: 1px 1px 1px white;
+}
+
+.showcase{
+  width: 100%;
+  max-width:1000px ;
+  padding: 20px;
+}
+
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+.opciones{
+  display: flex;
+  gap: 0.6rem;
+  aspect-ratio: 5/2;
+}
+
+.opcion{
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  flex: 1 2rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.opcion:hover{
+  flex: 20;
+}
+
+.opcion >h3{
+  white-space: nowrap;
+  color: white;
+  margin: 1rem 0.8rem;
+  font-size: 3vw;
+  opacity: 0.7;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.opcion:hover > h3{
+  opacity: 1;
+}
+
+.opcion > h3::before {
+  font-family: "Font Awesome 6 Free";
+  display: inline-block;
+  border-radius: 50%;
+  border: 0.2rem solid #ffffffe6;
+  aspect-ratio: 1 / 1;
+  margin-right: 1rem;
+  padding: 0.35em 0.25em 0em 0.25em;
+  font-size: 1.1rem;
+  vertical-align: 0.1rem;
+}
+
+.opcion:nth-child(1) {
+  background-image: url("../img/image1-2.png");
+  
+  
+}
+
+.opcion:nth-child(2){
+  background-image: url("../img/image2.png");
+  
+}
+
+.opcion:nth-child(3) {
+  background-image: url("../img/image3.png");
+  
+  
+}
+
+.opcion:nth-child(4){
+  background-image: url("../img/image4.png");
+  
+}
+
+table{
+  align-items: center;
+  text-align: center;
+
+}
+
+.container{
+  max-width: 800px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  border: 2px solid #ccc;
+}
+
+input[type="date"]{
+  width: 170px;
+}
+
+ul li input[type="checkbox"]{
+height: 30px;
+
+}
+
+
+input[type="number"] {
+  width: 30%;
+  -webkit-appearance: none; /* Chrome, Safari */
+  -moz-appearance: none; /* Firefox */
+  appearance: none; /* Other supported browsers */
+  width: 50px; /* Adjust width as needed */
+}
+
+#broker_fee, #lpt, #zillow_commission{
+  width: 60px;
+}
+
+.container .list-container{
+  width: 95%;
+  border-radius: 10px;
+}
+
+.container .list-container li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .list-container li h3{
+  text-align: left;
+  margin-right: auto;
+}
+.container .list-container li input[type="checkbox"]{
+  text-align: right;
+  width: 40px;
+}
+.container .list-container li button .fa-square{
+  margin-right: 5px;
+}
+
+
+.signup-container{
+    width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px; 
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo con opacidad */
+    backdrop-filter: blur(15px); /* Aplicar desenfoque */
+  }
+
+  input, select, textarea, option{
+  background-color: #def;
+  border: 1px solid #000;
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  outline: none
+}
+
+.signup-container label, input {
+    width: 95%;
+}
+
+.breakdown{
+  border-color: #000;
+  flex: 1;
+  margin-bottom: 10px;
+  box-shadow: 10px 15px 40px rgba(0, 0, 0, 0.5);
+}
+.breakdown h3{
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+
+}
+.breakdown .table{
+  
+  padding: 10px;
+  border: 1px solid #ccc;
+  align-content: center;
+}
+.breakdown .table td{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.breakdown-input{
+  width: 50px;
+}
+
+.botones{
+  display: flex;
+  align-items: center;
+}
+.botones a{
+  margin-left: 2%;
+}

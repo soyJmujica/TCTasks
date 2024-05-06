@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{property.address}}</h2>
+<h2>{{property.flex_organic}} {{property.category}} Transacction</h2>
+<br>
+<form method="post">
+    {% csrf_token %}
+<button type="submit" class="btn btn-success">
+    Save
+</button>    
+<ul class="list-container">
+    {% for field in form %}
+    <li><h3>{{field.label_tag}}</h3>{{field}}</li>
+    {% endfor %}
+</ul>
+
+</form>
+<a href="{% url 'Properties' %}" class="btn btn-primary">&#11164; Back</a>
+
+{% endblock %}

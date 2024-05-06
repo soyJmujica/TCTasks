@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr> 
+            <th><h1>Property</h1></th>
+ 
+            <th><h1>Status</h1></th> 
+        </tr>
+    </thead>
+    <tbody> 
+        {% for property in properties %}
+        <tr>
+            <td><h3><a href="{% url 'checklist' property.id %}">{{property.address}}</a></h3></td>
+            <td>{% if property.completed %}<i class="fa fa-check-square-o" style="font-size: 48px; color: green;"></i>{% else %}<i class="far fa-square" style="font-size: 48px; color: red;"></i>{% endif %}</td>
+            </tr>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock  %}

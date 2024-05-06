@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <table class="table">
+        <thead>
+            <tr> 
+                <th><h2>Property</h2></th>
+     
+                <th><h2>DA Requested</h2></th> 
+            </tr>
+        </thead>
+        <tbody> 
+            {% for property in properties %}
+            <tr>
+                <td><h3>{{property.address}}</h3></td>
+                <td>{% if property.da_requested %} <form action="{% url 'DA incompleted' property.id %}" method="POST">{% csrf_token %} <button class="btn" type="submit" id="botonDA"><i class="fa fa-check-square-o" style="font-size: 48px; color: green;"></i></button></form> {% else %} <form action="{% url 'DA completed' property.id %}" method="POST">{% csrf_token %} <button class="btn" type="submit" id="botonDA"><i class="far fa-square" style="font-size: 48px; color: red;"></i></button></form> {% endif %}</td>
+                </tr>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+ <!--script>
+    
+    document.getElementById("botonDA").onclick = function() {
+      alert("DA has been requested");
+    };
+</script-->
+
+
+
+{% endblock %}

@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'Properties' %}" class="btn btn-primary">&#11164;</a>
+<h1>{{property.address}}</h1>
+<ul>
+    <li>{{property.flex_organic}} {{property.category}}</li>
+    <li>Effective Date: {{property.effective_date}}</li>
+    <li>Closing Date: {{property.closing_date}}</li>
+    <li>{{alert}}</li>
+</ul>
+<div class="botones">
+<form action="{% url 'congrats email' property.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-warning">
+    Create Congratulations Email
+  </button>
+</form>
+<a href="{% url 'closing property' property.id %}" class="btn btn-primary">Close</a>  
+<a href="{% url 'edit property' property.id %}" class="btn btn-secondary">Edit</a>
+</div>
+
+
+<div class="accordion breakdown" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <h3>Breakdown</h3>
+        </button>
+      </h2>
+      
+    </div>
+    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <table class="table" id="tabla">
+          <tr>
+              <td style="font-weight: bold;color: white; background-color: black;">Sale's Price:</td>
+              <td style="font-weight: bold;background-color: rgb(4, 170, 170);">$ {{property.price}}</td>
+              <td style="font-weight: bold;background-color: rgb(4, 170, 170);"></td>
+          </tr>
+          <tr>
+              {% if property.category == 'Buyer' %}
+              <td style="background-color: lightpink;">MLS Fee:</td>
+              <td style="font-weight: bold;background-color: aqua;">-${{property.mls_fee}}</td>
+              <td style="font-weight: bold;background-color: aqua;"></td>
+              {% else %}
+              <td style="background-color: rgb(182, 255, 245);">MLS Fee:</td>
+              <td style="font-weight: bold;background-color: aqua;">+${{property.mls_fee}}</td>
+              <td style="font-weight: bold;background-color: aqua;"></td>
+              {% endif %}
+          </tr>
+          <tr>
+              <td style="color: white; background-color: black; font-weight: bold;">MLS Commission:</td>
+              <td style="font-weight: bold;background-color: aqua;">{{property.commission}}%</td>
+              <td style="font-weight: bold;background-color: rgb(255, 145, 0);">$ <span id="commission">{{commission|floatformat:2}}</span></td>
+          </tr>
+          <tr>
+              <td style="color: white; background-color: rgb(30, 71, 255);font-weight: bold;">Zillow Commission:</td>
+              <td style="font-weight: bold;background-color: aqua;"><input type="number" id="zillow_commission">% </td>
+              <td style="font-weight: bold;background-color: rgb(255, 145, 0);">$ <span id="zillow_payment">0</span></td>
+          </tr>
+          <tr>
+              <td style="color: white; background-color: black; font-weight: bold;">Remaining Commission:</td>
+              <td style="color: black; background-color: yellow; font-weight: bold;">100%</td>
+              <td style="color: black; background-color: yellow; font-weight: bold;">$<span id="remaining">{{commission|floatformat:2}} </span></td>
+          </tr>
+          <tr>
+              <td style="color: white; background-color: darkgreen; font-weight: bold;">Team Lead (Larry):</td>
+              {% if property.flex_organic == "Flex" %}
+              <td style="font-weight: bold;background-color: aqua;"><span id="porcentaje_team">30%</span></td>
+              {% elif property.flex_organic == "Team Lead" %}
+              <td style="font-weight: bold;background-color: aqua;"><span id="porcentaje_team">50%</span></td>
+              {% else %}
+              <td style="font-weight: bold;background-color: aqua;"><span id="porcentaje_team">10%</span></td>
+              {% endif %}
+              <td style="font-weight: bold;background-color: rgb(255, 145, 0);">$<span id="team_lead"></span></td>
+          </tr>
+          <tr>
+              <td style="color: white; background-color: purple; font-weight: bold;">Agent Commission :</td>
+              {% if property.flex_organic == "Flex" %}
+              <td style="color: white; background-color: black; font-weight: bold;"><span id="porcentaje_agent">70%</span></td>
+              {% elif property.flex_organic == "Team Lead" %}
+              <td style="color: white; background-color: black; font-weight: bold;"><span id="porcentaje_agent">50%</span></td>
+              {% else %}
+              <td style="color: white; background-color: black; font-weight: bold;"><span id="porcentaje_agent">90%</span></td>
+              {% endif %}
+              <td style="font-weight: bold;background-color: rgb(255, 145, 0);">$ <span id="co_agent_value"></span> </td>
+          </tr>
+        <tr>
+          <td style="color: white; background-color: red; font-weight: bold;">Co Agent Deductions</td>
+          <td style="color: white; background-color: red; font-weight: bold;">Broker Fee: <input type="number" id="broker_fee"></td>
+          <td style="color: white; background-color: red; font-weight: bold;">LPT: <input type="number" id="lpt"></td>
+        </tr>
+        <tr>
+          <td style="color: white; background-color: black; font-weight: bold;">Co-Agent Total Commission</td>
+          <td style="color: white; background-color: black; font-weight: bold;"></td>
+          <td style="color: white; background-color: black; font-weight: bold;"><h2>$<span id="co_agent_total">0</span></h2></td>
+        </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const porcentaje_team = document.getElementById('porcentaje_team').textContent;
+    const porcentaje_agent = document.getElementById('porcentaje_agent').textContent;
+
+    const porcentajeTeam = parseFloat(porcentaje_team.replace('%',''));
+    const porcentajeAgent = parseFloat(porcentaje_agent.replace(/,/g,''));
+
+    const remaining = document.getElementById('remaining').textContent;
+
+    const remainingValue = parseFloat(remaining.replace(/,/g,''));
+    
+
+    document.getElementById('team_lead').textContent =( porcentajeTeam * remainingValue/100).toLocaleString('en-US',{minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('co_agent_value').textContent = ( porcentajeAgent * remainingValue/100).toLocaleString('en-US',{minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('co_agent_total').textContent = document.getElementById('co_agent_value').textContent;
+
+
+    document.getElementById('broker_fee').addEventListener('input', updateResult);
+    document.getElementById('lpt').addEventListener('input', updateResult);
+    document.getElementById('zillow_commission').addEventListener('input',updateResult);
+    
+
+    function updateResult() {
+      const commission = document.getElementById('commission').textContent;
+      const porcentaje_team = document.getElementById('porcentaje_team').textContent;
+      const porcentaje_agent = document.getElementById('porcentaje_agent').textContent;
+      const input1Value = parseFloat(document.getElementById('broker_fee').value) || 0;
+      const input2Value = parseFloat(document.getElementById('lpt').value) || 0;
+      const input3Value = parseFloat(document.getElementById('zillow_commission').value)||0;
+      
+
+      const commissionValue = parseFloat(commission.replace(/,/g,''));
+      const porcentajeTeam = parseFloat(porcentaje_team.replace('%',''));
+      const porcentajeAgent = parseFloat(porcentaje_agent.replace('%',''));
+       
+
+
+      const payment = commissionValue * input3Value / 100;
+      const remaining = commissionValue - payment;
+      const team_lead = remaining * porcentajeTeam / 100;
+      const co_agent = remaining * porcentajeAgent / 100;
+
+      const zillowPayment = payment.toLocaleString('en-US',{
+        minimumFractionDigits:2,
+        maximumFractionDigits: 2
+      });
+      const remainingCommission = remaining.toLocaleString('en-US',{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      });
+      const teamLead = team_lead.toLocaleString('en-US',{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      });
+      const coAgent = co_agent.toLocaleString('en-US',{
+        minimumFractionDigits:2,
+        maximumFractionDigits: 2
+      });
+      
+      document.getElementById('zillow_payment').textContent = zillowPayment;
+      document.getElementById('remaining').textContent = remainingCommission;
+      document.getElementById('team_lead').textContent = teamLead;
+      document.getElementById('co_agent_value').textContent = coAgent;
+
+
+    const currentValue = document.getElementById('co_agent_value').textContent;
+    const coAgentValue = parseFloat(currentValue.replace(/,/g,''));
+    const result = coAgentValue - input1Value - input2Value;
+    const coAgentTotal = result.toLocaleString('en-US',{
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    document.getElementById('co_agent_total').textContent = coAgentTotal;
+
+      
+
+      
+      
+    }
+
+    
+
+  </script>
+
+
+{% endblock %}

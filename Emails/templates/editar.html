@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{property.address}}</h2>
+<h2>{{property.flex_organic}} {{property.category}} Transacction</h2>
+<br>
+<form method="post">
+    {% csrf_token %}
+<button type="submit" class="btn btn-success">
+    Save
+</button>    
+<ul class="list-container">
+    {{form.as_table}}
+</ul>
+
+</form>
+<a href="{% url 'details' property.id %}" class="btn btn-primary">&#11164; Back</a>
+{% endblock %}

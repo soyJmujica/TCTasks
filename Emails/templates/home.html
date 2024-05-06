@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<div class="showcase">
+<div class="opciones">
+    <div class="opcion">
+        <h3><a href="{% url 'under contract' %}" style="color: white;"><i class="fa fa-edit"></i>New Under contract</a> </h3>
+        
+    </div>
+    <div class="opcion">
+        
+        <h3><a href="{% url 'tasks' %}" style="color: white;"><i class="fa fa-navicon"></i>Under Contract Tasks</a></h3>
+        
+    </div>
+    <div class="opcion">
+        <h3><a href="{% url 'DA' %}" style="color: white;"><i class="fa fa-handshake-o"></i>DA</a></h3>
+         
+    </div>
+    <div class="opcion">
+        <h3><a href="{% url 'Properties' %}" style="color: white;"><i class="fa fa-home"></i>Properties</a></h3>
+        
+    </div>
+</div>    
+</div>
+
+
+{% endblock %}
