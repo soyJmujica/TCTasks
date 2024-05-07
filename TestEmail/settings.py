@@ -82,11 +82,14 @@ WSGI_APPLICATION = "TestEmail.wsgi.application"
 
 ### AWS
 '''DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='database-1.c5mykqws6n7i.us-east-2.rds.amazonaws.com',
-        conn_max_age=600
-    )
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "-",
+        "USER": "admin",
+        "PASSWORD": "password",
+        "HOST": "django-database-1.c5mykqws6n7i.us-east-2.rds.amazonaws.com",
+        "PORT": "3306",
+    }
 }'''
 ##########
 ###SQLITE###
