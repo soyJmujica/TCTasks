@@ -60,7 +60,6 @@ def	signin(request):
     return render(request, 'login.html', {"form":form, "encabezado":'Log In'})
         
 def ingreso(request):
-    login = AuthenticationForm()
     return render(request, 'ingreso.html', {'login':login, "encabezado": "Sign Up  |  Log In"})
 
 def not_logged(request):
