@@ -129,7 +129,7 @@ input[type="number"] {
   -webkit-appearance: none; /* Chrome, Safari */
   -moz-appearance: none; /* Firefox */
   appearance: none; /* Other supported browsers */
-  width: 50px; /* Adjust width as needed */
+   /* Adjust width as needed */
 }
 
 #broker_fee, #lpt, #zillow_commission{
