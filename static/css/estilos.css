@@ -125,7 +125,7 @@ height: 30px;
 
 
 input[type="number"] {
-  width: 30%;
+  width: 25%;
   -webkit-appearance: none; /* Chrome, Safari */
   -moz-appearance: none; /* Firefox */
   appearance: none; /* Other supported browsers */
