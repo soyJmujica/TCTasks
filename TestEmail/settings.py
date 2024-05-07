@@ -81,13 +81,13 @@ WSGI_APPLICATION = "TestEmail.wsgi.application"
 
 
 ### AWS
-DATABASES = {
+'''DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
         default='database-1.c5mykqws6n7i.us-east-2.rds.amazonaws.com',
         conn_max_age=600
     )
-}
+}'''
 ##########
 ###SQLITE###
 DATABASES = {
