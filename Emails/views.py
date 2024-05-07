@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from .models import UnderContract
 from .forms import UnderContractForm, UnderContractProcessing, UnderContractClosing
 from django.core.mail import send_mail, EmailMessage
-from TestEmail.settings import EMAIL_HOST_USER
+#from TestEmail.settings import EMAIL_HOST_USER
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta

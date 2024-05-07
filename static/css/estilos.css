@@ -126,10 +126,10 @@ height: 30px;
 
 input[type="number"] {
   width: 20%;
-  -webkit-appearance: none; /* Chrome, Safari */
-  -moz-appearance: none; /* Firefox */
-  appearance: none; /* Other supported browsers */
-   /* Adjust width as needed */
+  -webkit-appearance: textarea; /* Chrome, Safari */
+  -moz-appearance: textarea; /* Firefox */
+  appearance: textarea; /* Other supported browsers */
+   padding: 5px;
 }
 
 #broker_fee, #lpt, #zillow_commission{

@@ -1,12 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="card">
-
-    
-
-</div>
-
 <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
@@ -18,9 +12,7 @@
     </div>
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        
-        
+      <div class="card-body">        
           <label for="first_name">Buyer's First Name</label><input type="text" name="first name" id="first_name" placeholder="Buyer's first name">
           <label for="last_name">Buyer's Last Name</label><input type="text" name="last name" id="last_name" placeholder="Buyer's last name">
           <label for="buyer_phone">Buyer's Phone Number</label><input type="tel" name="buyer phone" id="buyer_phone", placeholder="Buyer's Phone Number">
@@ -41,7 +33,6 @@
        <label for="escrow_date">Escrow Deadline</label> <input type="date" name="escrow date" id="escrow_date" placeholder="Escrow date"><br>
       <label for="inspection">Inspection Deadline</label> <input type="date" name="inspection date" id="inspection" placeholder="Inspection Date"><br>
       <label for="financing_date">Financing Deadline</label> <input type="date" name="financing date" id="financing_date">
-      
       </div>
     </div>
   </div>
@@ -55,6 +46,7 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
+        <h3>Subject:  Congratulations!! We are under contract on {{property.address}}!!!</h3>
         <h4> Hi <span id="buyer_firstname">buyer_name</span> </h4>
         <p>CONGRATULATIONS on the acceptance of your contract at {{property.address}}! <br>
     <strong>First thing first</strong> ~We need to wire escrow money or drop the check off to <span id="title_company">title_company</span> on or before <span id="escrow_deadline">escrow_date</span>, in the amount of ${{property.escrow}}.  On the memo section of the check please write "EMD for {{property.address}}". Escrow money will go towards your closing costs.  Escrow money is refundable during our inspection period. <strong style="color: red;">ALSO VERY IMPORTANT Wire Fraud is very real.  So if you ever wire money to title, always call Title </strong> <strong style="color: blue;"> to confirm exact routing and account numbers for the wire. Title will never change these numbers.  Call and verify every time you wire.</strong> 
@@ -110,7 +102,7 @@
   const financingCheckbox = document.getElementById('financing');
   const variableSpan = document.getElementById('variable');
   const harborCheckbox = document.getElementById('harbor_insurance');
-  const harborSpan = document.getElementById('harbor')
+  const harborSpan = document.getElementById('harbor');
 
 financingCheckbox.addEventListener('change', function() {
   if (this.checked) {
@@ -171,6 +163,7 @@ titleCompany.textContent = title_nameValue;
 escrowDate.textContent = formatDate(escrow_dateValue);
 inspectionDate.textContent = formatDate(inspectionValue);
 financingDeadline.textContent = formatDate(financing_dateValue);
+
 
 };
 

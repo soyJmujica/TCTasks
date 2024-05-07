@@ -1,8 +1,8 @@
 databases:
   - name: mysitedb
     plan: free
-    databaseName: mysite
-    user: mysite
+    databaseName: -
+    user: admin
 
 services:
   - type: web
