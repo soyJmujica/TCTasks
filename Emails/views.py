@@ -39,7 +39,7 @@ def signup(request):
             print(f"Email sent to {username} - {email}")
             return redirect('/')
         else:
-            print(f"a vaina {request.POST["first_name"]} tu no tienes permitido registrate")
+            #print(f"a vaina {request.POST["first_name"]} tu no tienes permitido registrate")
             return redirect("signup")
       
     return redirect('ingreso')
