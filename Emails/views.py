@@ -31,12 +31,12 @@ def signup(request):
 				email = email
 				)
             login(request, user)
-            subject = "Welcome to the Emails App"
+            """subject = "Welcome to the Emails App"
             message = f"Hi {username}, this is a message to Welcome you in our team."
             email_from = EMAIL_HOST_USER
             recipient_list = [user.email,]
             send_mail(subject, message, email_from, recipient_list)
-            print(f"Email sent to {username} - {email}")
+            print(f"Email sent to {username} - {email}")"""
             return redirect('/')
         else:
             #print(f"a vaina {request.POST["first_name"]} tu no tienes permitido registrate")

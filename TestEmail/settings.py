@@ -180,7 +180,7 @@ if not DEBUG:
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-LOGIN_URL = "/yorenotlogged/"
+LOGIN_URL = "/youarenotlogged/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
