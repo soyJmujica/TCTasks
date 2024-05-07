@@ -180,7 +180,7 @@ if not DEBUG:
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-LOGIN_URL = "/yodjango.core.mail.backends.smtp.EmailBackenduarenotlogged/"
+LOGIN_URL = "/yorenotlogged/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
