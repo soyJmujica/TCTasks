@@ -53,8 +53,7 @@ def	signin(request):
             login(request, user)
             return redirect('home')
         else:
-            message = "Incorrect username or password"
-            return redirect('ingreso', message = message, form=AuthenticationForm())
+            return redirect('ingreso',form=AuthenticationForm())
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {"form":form, "encabezado":'Log In'})
