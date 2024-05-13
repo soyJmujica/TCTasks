@@ -81,7 +81,7 @@ WSGI_APPLICATION = "TestEmail.wsgi.application"
 
 
 ### AWS
-DATABASES = {
+'''DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "-",
@@ -90,7 +90,7 @@ DATABASES = {
         "HOST": "django-database-1.c5mykqws6n7i.us-east-2.rds.amazonaws.com",
         "PORT": "3306",
     }
-}
+}'''
 ##########
 ###SQLITE###
 '''DATABASES = {
